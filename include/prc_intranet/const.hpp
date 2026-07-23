@@ -43,13 +43,28 @@ namespace prc_intranet::constants {
     constexpr uint8_t VALVE_SOL3 = 0xC;
     constexpr uint8_t VALVE_SOL4 = 0xD;
 
-    // DPR (DPR_ETH/DPR_LOX) valve ids. PLACEHOLDERS, confirm before use.
-    constexpr uint8_t VALVE_MAIN      = 0xE0;
-    constexpr uint8_t VALVE_SAFETY    = 0xE1;
+    // DPR (DPR_ETH/DPR_LOX) valve ids for cmd_valves.valve_id. Each DPR
+    // bay (LOX or Ethanol) has its own 3 valves, none shared with the
+    // other bay -- the id byte just picks which of THIS board's 3 valves,
+    // since the CAN id (DPR_ETH_* vs DPR_LOX_*) already picks the board:
+    //   VALVE_SAFETY    -- ETH Safety DPR / LOX Safety DPR
+    //   VALVE_VENT      -- Ethanol Tank Venting / LOX Tank Venting
+    //   VALVE_BALLVALVE -- Ethanol Tank DPR / LOX Tank DPR (proportional,
+    //                      normally driven by a local closed-loop
+    //                      controller, not over CAN -- see cmd_valves)
+    // PLACEHOLDERS, confirm before use.
+    constexpr uint8_t VALVE_SAFETY    = 0xE0;
+    constexpr uint8_t VALVE_VENT      = 0xE1;
     constexpr uint8_t VALVE_BALLVALVE = 0xE2;
 
     constexpr uint8_t VALVE_STATE_OPEN   = 0x1;
     constexpr uint8_t VALVE_STATE_CLOSED = 0x0;
+
+    // payload::dpr_state.valve_mask bit layout. Only Safety/Vent are
+    // represented (both genuinely on/off); the ball valve is proportional
+    // (no bit here, see VALVE_BALLVALVE above).
+    constexpr uint8_t VALVE_MASK_BIT_SAFETY = 0x01;
+    constexpr uint8_t VALVE_MASK_BIT_VENT   = 0x02;
 
     // Safety keys (EMERGENCY payload validation constants).
     // All placeholders except BROADCAST_ABORT and PRC_PASSIVATE, which

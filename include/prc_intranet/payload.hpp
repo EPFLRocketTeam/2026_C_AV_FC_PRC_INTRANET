@@ -25,7 +25,7 @@ namespace prc_intranet::payload {
 
     // Single valve-ID + state. Always one valve at a time.
     struct cmd_valves {
-        uint8_t valve_id; // VALVE_SOL1..4 (PRC) or VALVE_MAIN/SAFETY/BALLVALVE (DPR)
+        uint8_t valve_id; // VALVE_SOL1..4 (PRC) or VALVE_SAFETY/VENT/BALLVALVE (DPR)
         uint8_t state;    // VALVE_STATE_OPEN / VALVE_STATE_CLOSED
     };
 
@@ -60,7 +60,7 @@ namespace prc_intranet::payload {
 
     struct dpr_state {
         uint8_t fsm_state;
-        uint8_t valve_mask;
+        uint8_t valve_mask; // VALVE_MASK_BIT_SAFETY / VALVE_MASK_BIT_VENT, see const.hpp
     };
 
     struct dpr_pressures {
