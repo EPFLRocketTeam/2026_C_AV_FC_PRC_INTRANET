@@ -48,8 +48,7 @@
     X(dpr_eth_cmd_valves,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::cmd_valves,      2) \
     X(dpr_eth_reset,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::reset,           4) \
     X(dpr_eth_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
-    X(dpr_eth_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_pressures,   8) \
-    X(dpr_eth_temps_1,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::dpr_temps_1,     8) \
+    X(dpr_eth_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_pressures, 8) \
     X(dpr_eth_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_temps_2, 8) \
     \
     X(dpr_lox_abort,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::safety_key,      4) \
@@ -58,8 +57,9 @@
     X(dpr_lox_cmd_valves,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::cmd_valves,      2) \
     X(dpr_lox_reset,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::reset,           4) \
     X(dpr_lox_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
-    X(dpr_lox_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_pressures,   8) \
-    X(dpr_lox_temps_1,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_temps_1,     8) \
+    X(dpr_lox_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_lox_pressures, 8) \
+    X(dpr_lox_temps_ota_1_2,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
+    X(dpr_lox_temps_ota_3_4,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x2)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
     X(dpr_lox_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_lox_temps_2, 8) \
     \
     /* Forwarded serial log lines, chunked 8 bytes/frame, always sent full

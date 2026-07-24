@@ -63,14 +63,22 @@ namespace prc_intranet::payload {
         uint8_t valve_mask; // VALVE_MASK_BIT_SAFETY / VALVE_MASK_BIT_VENT, see const.hpp
     };
 
-    struct dpr_pressures {
-        float p_xta;
-        float p_nco;
+    struct dpr_lox_pressures {
+        float p_ota;
+        float p_hpo;
     };
 
-    struct dpr_temps_1 {
-        float t_xta;
-        float t_nco;
+    struct dpr_eth_pressures {
+        float p_eta;
+        float p_hpe;
+    };
+
+    // One pair of Lox tank temperature readings out of 4 total; split
+    // across two messages (dpr_lox_temps_ota_1_2, dpr_lox_temps_ota_3_4)
+    // since 4 floats don't fit one 8-byte frame.
+    struct dpr_lox_temps_ota {
+        float t1;
+        float t2;
     };
 
     // DPR_ETH_TEMPS_2: T_COPV_EXT, T_FLS_90. Distinct from LOX's, see
@@ -114,8 +122,9 @@ namespace prc_intranet::payload {
     static_assert(sizeof(prc_t_chamber)   == 8);
     static_assert(sizeof(prc_t_injector)  == 8);
     static_assert(sizeof(dpr_state)       == 2);
-    static_assert(sizeof(dpr_pressures)   == 8);
-    static_assert(sizeof(dpr_temps_1)     == 8);
+    static_assert(sizeof(dpr_lox_pressures) == 8);
+    static_assert(sizeof(dpr_eth_pressures) == 8);
+    static_assert(sizeof(dpr_lox_temps_ota) == 8);
     static_assert(sizeof(dpr_eth_temps_2) == 8);
     static_assert(sizeof(dpr_lox_temps_2) == 8);
     static_assert(sizeof(cam_status)      == 2);
