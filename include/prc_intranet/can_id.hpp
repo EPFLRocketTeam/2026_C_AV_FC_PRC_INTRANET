@@ -23,6 +23,11 @@ namespace prc_intranet::can {
         TelProp   = 0x3, // High-rate telemetry (Pressures, FSM State).
         TelHealth = 0x4, // Low-rate telemetry (Temps, INA228/TMP1075/LMT85).
         System    = 0x5, // Timestamp sync, Heartbeats.
+        Log       = 0x7, // Forwarded serial log lines. Max value in this
+                          // 3-bit field on purpose: on real CAN, a smaller
+                          // arbitration id wins arbitration, so this always
+                          // loses to every other message class and can never
+                          // delay a command/telemetry frame.
     };
 
     enum class Node : uint8_t {

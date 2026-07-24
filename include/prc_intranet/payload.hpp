@@ -92,6 +92,15 @@ namespace prc_intranet::payload {
         uint8_t power_state;
     };
 
+    // Raw forwarded log bytes. Always sent as a full 8-byte frame; when a
+    // chunk has fewer than 8 real bytes, the sender zero-pads the rest,
+    // and the receiver stops appending at the first \0 it sees in a given
+    // frame. See log_aggregator for the chunking/reassembly logic built
+    // on top of this.
+    struct log_chunk {
+        uint8_t bytes[8];
+    };
+
 #pragma pack(pop)
 
     static_assert(sizeof(safety_key)      == 4);
@@ -110,5 +119,6 @@ namespace prc_intranet::payload {
     static_assert(sizeof(dpr_eth_temps_2) == 8);
     static_assert(sizeof(dpr_lox_temps_2) == 8);
     static_assert(sizeof(cam_status)      == 2);
+    static_assert(sizeof(log_chunk)       == 8);
 
 };

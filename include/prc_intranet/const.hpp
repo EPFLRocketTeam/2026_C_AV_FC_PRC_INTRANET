@@ -52,7 +52,6 @@ namespace prc_intranet::constants {
     //   VALVE_BALLVALVE -- Ethanol Tank DPR / LOX Tank DPR (proportional,
     //                      normally driven by a local closed-loop
     //                      controller, not over CAN -- see cmd_valves)
-    // PLACEHOLDERS, confirm before use.
     constexpr uint8_t VALVE_SAFETY    = 0xE0;
     constexpr uint8_t VALVE_VENT      = 0xE1;
     constexpr uint8_t VALVE_BALLVALVE = 0xE2;
@@ -66,12 +65,6 @@ namespace prc_intranet::constants {
     constexpr uint8_t VALVE_MASK_BIT_SAFETY = 0x01;
     constexpr uint8_t VALVE_MASK_BIT_VENT   = 0x02;
 
-    // Safety keys (EMERGENCY payload validation constants).
-    // All placeholders except BROADCAST_ABORT and PRC_PASSIVATE, which
-    // were given in CAN.md. Confirm/replace before flight; each must be
-    // unique per command and agreed with the whole team. Checking these
-    // against payload::safety_key is application logic, not this
-    // library's job (this library only handles framing/decoding).
     constexpr uint32_t SAFETY_KEY_BROADCAST_ABORT   = 0xABBABBFF;
     constexpr uint32_t SAFETY_KEY_PRC_PASSIVATE     = 0x42424242;
     constexpr uint32_t SAFETY_KEY_DPR_ETH_ABORT     = 0x2A2A2A2A;

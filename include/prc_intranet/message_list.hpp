@@ -60,4 +60,10 @@
     X(dpr_lox_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
     X(dpr_lox_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_pressures,   8) \
     X(dpr_lox_temps_1,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_temps_1,     8) \
-    X(dpr_lox_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_lox_temps_2, 8)
+    X(dpr_lox_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_lox_temps_2, 8) \
+    \
+    /* Forwarded serial log lines, chunked 8 bytes/frame, always sent full
+     * (short chunks zero-padded) -- see log_aggregator. */ \
+    X(log_chunk_prc_engine,    (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::log_chunk,      8) \
+    X(log_chunk_dpr_eth,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::log_chunk,      8) \
+    X(log_chunk_dpr_lox,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::log_chunk,      8)
