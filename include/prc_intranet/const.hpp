@@ -65,6 +65,14 @@ namespace prc_intranet::constants {
     constexpr uint8_t VALVE_MASK_BIT_SAFETY = 0x01;
     constexpr uint8_t VALVE_MASK_BIT_VENT   = 0x02;
 
+    // payload::prc_state.valve_mask bit layout (engine board's MO/ME
+    // main valves, both genuinely on/off). Same numeric values as the
+    // dpr_state bits above are fine, since they're separate messages with
+    // separate namespaces; kept as distinct names so callers on the
+    // engine side aren't reading DPR-flavored constants.
+    constexpr uint8_t VALVE_MASK_BIT_MO = 0x01;
+    constexpr uint8_t VALVE_MASK_BIT_ME = 0x02;
+
     constexpr uint32_t SAFETY_KEY_BROADCAST_ABORT   = 0xABBABBFF;
     constexpr uint32_t SAFETY_KEY_PRC_PASSIVATE     = 0x42424242;
     constexpr uint32_t SAFETY_KEY_DPR_ETH_ABORT     = 0x2A2A2A2A;
