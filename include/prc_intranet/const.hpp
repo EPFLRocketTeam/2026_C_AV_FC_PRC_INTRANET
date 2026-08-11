@@ -56,6 +56,14 @@ namespace prc_intranet::constants {
     constexpr uint8_t VALVE_VENT      = 0xE1;
     constexpr uint8_t VALVE_BALLVALVE = 0xE2;
 
+    // Not a single physical valve -- this board has no standalone COPV
+    // vent line, so venting the COPV (N2) means driving Vent+Safety+the
+    // ball valve together (gas exits via Safety -> the ball valve -> Vent
+    // -> atmosphere). Receiving side special-cases this id to run that
+    // bundled sequence instead of toggling one valve. See
+    // 2026_C_AV_PRC's prc_state.cpp Prc_Fsm_ManualVentCopv.
+    constexpr uint8_t VALVE_COPV_VENT = 0xE3;
+
     constexpr uint8_t VALVE_STATE_OPEN   = 0x1;
     constexpr uint8_t VALVE_STATE_CLOSED = 0x0;
 
