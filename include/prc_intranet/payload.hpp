@@ -33,6 +33,10 @@ namespace prc_intranet::payload {
         uint32_t magic; // RESET_MAGIC
     };
 
+    struct ball_valve_position {
+        float percent_open; // 0.0 - 100.0
+    };
+
     struct prc_state {
         uint8_t fsm_state;
         uint8_t valve_mask;
@@ -116,6 +120,7 @@ namespace prc_intranet::payload {
     static_assert(sizeof(on_off)          == 1);
     static_assert(sizeof(cmd_valves)      == 2);
     static_assert(sizeof(reset)           == 4);
+    static_assert(sizeof(ball_valve_position) == 4);
     static_assert(sizeof(prc_state)       == 2);
     static_assert(sizeof(prc_p_chamber)   == 8);
     static_assert(sizeof(prc_p_injector)  == 8);

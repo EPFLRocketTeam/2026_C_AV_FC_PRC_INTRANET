@@ -36,6 +36,7 @@
     X(prc_clear_to_ignite,     (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::empty,           0) \
     X(prc_cmd_valves,          (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::cmd_valves,      2) \
     X(prc_reset,               (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::reset,           4) \
+    X(prc_coldflow,            (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x3)), ::prc_intranet::payload::empty,           0) \
     X(prc_state,               (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::prc_state,       2) \
     X(prc_p_chamber,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::prc_p_chamber,   8) \
     X(prc_p_injector,          (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::prc_p_injector,  8) \
@@ -47,6 +48,7 @@
     X(dpr_eth_pressurize,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::HighCmd,   ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::on_off,          1) \
     X(dpr_eth_cmd_valves,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::cmd_valves,      2) \
     X(dpr_eth_reset,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::reset,           4) \
+    X(dpr_eth_ball_valve,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprEth, 0x2)), ::prc_intranet::payload::ball_valve_position, 4) \
     X(dpr_eth_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
     X(dpr_eth_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_pressures, 8) \
     X(dpr_eth_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_temps_2, 8) \
@@ -56,6 +58,7 @@
     X(dpr_lox_pressurize,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::HighCmd,   ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::on_off,          1) \
     X(dpr_lox_cmd_valves,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::cmd_valves,      2) \
     X(dpr_lox_reset,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::reset,           4) \
+    X(dpr_lox_ball_valve,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::DprLox, 0x2)), ::prc_intranet::payload::ball_valve_position, 4) \
     X(dpr_lox_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
     X(dpr_lox_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::dpr_lox_pressures, 8) \
     X(dpr_lox_temps_ota_1_2,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
