@@ -42,22 +42,21 @@ namespace prc_intranet::payload {
         uint8_t valve_mask;
     };
 
-    struct prc_p_chamber {
+    struct prc_p_injector {
         float p_oin;
         float p_ein;
     };
 
-    struct prc_p_injector {
+    struct prc_p_chamber {
         float p_ccc;
-        float p_cig;
     };
 
-    struct prc_t_chamber {
+    struct prc_t_injector {
         float t_oin;
         float t_ein;
     };
 
-    struct prc_t_injector {
+    struct prc_t_chamber {
         float t_ccc;
         uint8_t reserved[4];
     };
@@ -122,10 +121,10 @@ namespace prc_intranet::payload {
     static_assert(sizeof(reset)           == 4);
     static_assert(sizeof(ball_valve_position) == 4);
     static_assert(sizeof(prc_state)       == 2);
-    static_assert(sizeof(prc_p_chamber)   == 8);
     static_assert(sizeof(prc_p_injector)  == 8);
-    static_assert(sizeof(prc_t_chamber)   == 8);
+    static_assert(sizeof(prc_p_chamber)   == 4);
     static_assert(sizeof(prc_t_injector)  == 8);
+    static_assert(sizeof(prc_t_chamber)   == 8);
     static_assert(sizeof(dpr_state)       == 2);
     static_assert(sizeof(dpr_lox_pressures) == 8);
     static_assert(sizeof(dpr_eth_pressures) == 8);
