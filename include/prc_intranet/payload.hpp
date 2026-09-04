@@ -112,6 +112,36 @@ namespace prc_intranet::payload {
         uint8_t bytes[8];
     };
 
+    enum board_id : uint8_t {
+        FC,
+        DPR_ETH,
+        DPR_LOX,
+        ENGINE
+    };
+    enum log_channel : uint8_t {
+        CAN, USB
+    };
+
+    struct log_config {
+        board_id board;
+        log_channel channel;
+        bool enabled;
+    };
+
+    struct config_chunk {
+        uint8_t offset;
+        uint8_t buffer[7];
+    };
+
+    struct config_commit {
+        board_id board;
+    };
+
+    struct config_crc {
+        uint32_t crc_buffer;
+        uint32_t crc_commited;
+    };
+
 #pragma pack(pop)
 
     static_assert(sizeof(safety_key)      == 4);
@@ -133,5 +163,9 @@ namespace prc_intranet::payload {
     static_assert(sizeof(dpr_lox_temps_2) == 8);
     static_assert(sizeof(cam_status)      == 2);
     static_assert(sizeof(log_chunk)       == 8);
+    static_assert(sizeof(log_config) == 3);
+    static_assert(sizeof(config_chunk) == 8);
+    static_assert(sizeof(config_commit) == 1);
+    static_assert(sizeof(config_crc) == 8);
 
 };

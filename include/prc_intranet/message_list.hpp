@@ -69,4 +69,11 @@
      * (short chunks zero-padded) -- see log_aggregator. */ \
     X(log_chunk_prc_engine,    (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::log_chunk,      8) \
     X(log_chunk_dpr_eth,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::log_chunk,      8) \
-    X(log_chunk_dpr_lox,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::log_chunk,      8)
+    X(log_chunk_dpr_lox,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Log,        ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::log_chunk,      8) \
+    X(log_config,              (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::Fc,     0x1)), ::prc_intranet::payload::log_config,     3) \
+    /* Flight Parameters Configuration */ \
+    X(config_send_data,        (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::Fc,     0x2)), ::prc_intranet::payload::config_chunk,   8) \
+    X(config_send_commit,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::Fc,     0x3)), ::prc_intranet::payload::config_commit,  1) \
+    X(config_crc_prc_engine,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::config_crc,     8) \
+    X(config_crc_dpr_eth,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::config_crc,     8) \
+    X(config_crc_dpr_lox,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::config_crc,     8)
