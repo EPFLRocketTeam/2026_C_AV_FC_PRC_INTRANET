@@ -42,6 +42,7 @@
     X(prc_p_chamber,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::prc_p_chamber,   4) \
     X(prc_t_injector,          (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::prc_t_injector,  8) \
     X(prc_t_chamber,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::prc_t_chamber,   8) \
+    X(dpr_lox_temps_ota_5_6,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
     \
     X(dpr_eth_abort,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::safety_key,      4) \
     X(dpr_eth_passivate,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::safety_key,      4) \

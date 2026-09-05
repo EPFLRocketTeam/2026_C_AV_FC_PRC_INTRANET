@@ -82,6 +82,14 @@ namespace prc_intranet::payload {
     struct dpr_lox_temps_ota {
         float t1;
         float t2;
+
+        float &ota1 () { return t1; }
+        float &ota3 () { return t1; }
+        float &ota5 () { return t1; }
+        
+        float &ota2 () { return t2; }
+        float &ota4 () { return t2; }
+        float &ota6 () { return t2; }
     };
 
     // DPR_ETH_TEMPS_2: T_COPV_EXT, T_FLS_90. Distinct from LOX's, see
