@@ -150,6 +150,10 @@ namespace prc_intranet::payload {
         uint32_t crc_commited;
     };
 
+    struct preburn {
+        board_id board;
+    };
+
 #pragma pack(pop)
 
     static_assert(sizeof(safety_key)      == 4);
@@ -175,5 +179,6 @@ namespace prc_intranet::payload {
     static_assert(sizeof(config_chunk) == 8);
     static_assert(sizeof(config_commit) == 1);
     static_assert(sizeof(config_crc) == 8);
+    static_assert(sizeof(preburn) == 1);
 
 };

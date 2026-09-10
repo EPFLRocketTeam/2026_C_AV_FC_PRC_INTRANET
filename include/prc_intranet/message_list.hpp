@@ -33,6 +33,7 @@
     \
     X(prc_passivate,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::safety_key,      4) \
     X(prc_ignite,              (::prc_intranet::can::make_id(::prc_intranet::can::Priority::HighCmd,   ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::empty,           0) \
+    X(prc_preburn,             (::prc_intranet::can::make_id(::prc_intranet::can::Priority::HighCmd,   ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::preburn,         1) \
     X(prc_clear_to_ignite,     (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::empty,           0) \
     X(prc_cmd_valves,          (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::cmd_valves,      2) \
     X(prc_reset,               (::prc_intranet::can::make_id(::prc_intranet::can::Priority::LowCmd,    ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::reset,           4) \
