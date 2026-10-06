@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <cstdint>
 
 namespace prc_intranet::payload {
@@ -80,16 +81,21 @@ namespace prc_intranet::payload {
     // across two messages (dpr_lox_temps_ota_1_2, dpr_lox_temps_ota_3_4)
     // since 4 floats don't fit one 8-byte frame.
     struct dpr_lox_temps_ota {
-        float t1;
-        float t2;
+        float t1 = NAN;
+        float t2 = NAN;
 
-        float &ota1 () { return t1; }
-        float &ota3 () { return t1; }
-        float &ota5 () { return t1; }
+        bool hasFirst  () { return std::isnan(t1); }
+        bool hasSecond () { return std::isnan(t2); }
+
+        bool hasData () { return hasFirst() || hasSecond(); }
+
+        float &ota1 () { return t1; } bool hasOta1 () { return hasFirst(); }
+        float &ota3 () { return t1; } bool hasOta3 () { return hasFirst(); }
+        float &ota5 () { return t1; } bool hasOta5 () { return hasFirst(); }
         
-        float &ota2 () { return t2; }
-        float &ota4 () { return t2; }
-        float &ota6 () { return t2; }
+        float &ota2 () { return t2; } bool hasOta2 () { return hasSecond(); }
+        float &ota4 () { return t2; } bool hasOta4 () { return hasSecond(); }
+        float &ota6 () { return t2; } bool hasOta6 () { return hasSecond(); }
     };
 
     // DPR_ETH_TEMPS_2: T_COPV_EXT, T_FLS_90. Distinct from LOX's, see
