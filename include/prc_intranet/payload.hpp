@@ -77,6 +77,18 @@ namespace prc_intranet::payload {
         float p_hpe;
     };
 
+    struct cable_info {
+        uint8_t has_no_cable_continuity;
+
+        cable_info () = default;
+        cable_info (bool value) : has_no_cable_continuity(value ? 1 : 0) {}
+
+        bool get_no_cable_continuity () {
+            return has_no_cable_continuity != 0;
+        }
+    };
+    static_assert(sizeof(cable_info) == 1);
+
     // One pair of Lox tank temperature readings out of 4 total; split
     // across two messages (dpr_lox_temps_ota_1_2, dpr_lox_temps_ota_3_4)
     // since 4 floats don't fit one 8-byte frame.
