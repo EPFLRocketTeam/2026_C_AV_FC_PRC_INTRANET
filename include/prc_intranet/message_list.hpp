@@ -54,6 +54,7 @@
     X(dpr_eth_state,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::dpr_state,       2) \
     X(dpr_eth_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_pressures, 8) \
     X(dpr_eth_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_temps_2, 8) \
+    X(dpr_eth_bv_state,        (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x2)), ::prc_intranet::payload::ball_valve_position, 4) \
     \
     X(dpr_lox_abort,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::safety_key,      4) \
     X(dpr_lox_passivate,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::safety_key,      4) \
@@ -68,6 +69,7 @@
     X(dpr_lox_temps_ota_3_4,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x3)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
     X(dpr_lox_temps_ota_5_6,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x4)), ::prc_intranet::payload::dpr_lox_temps_ota, 8) \
     X(dpr_lox_publish_cable,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x5)), ::prc_intranet::payload::cable_info,        1) \
+    X(dpr_lox_bv_state,        (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprLox, 0x6)), ::prc_intranet::payload::ball_valve_position, 4) \
     \
     /* Forwarded serial log lines, chunked 8 bytes/frame, always sent full
      * (short chunks zero-padded) -- see log_aggregator. */ \
