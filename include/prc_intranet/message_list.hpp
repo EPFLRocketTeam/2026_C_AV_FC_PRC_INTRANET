@@ -43,7 +43,6 @@
     X(prc_p_chamber,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::prc_p_chamber,   4) \
     X(prc_t_injector,          (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::prc_t_injector,  8) \
     X(prc_t_chamber,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::prc_t_chamber,   8) \
-    X(prc_publish_cable,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::PrcP,   0x2)), ::prc_intranet::payload::cable_info,      1) \
     \
     X(dpr_eth_abort,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::safety_key,      4) \
     X(dpr_eth_passivate,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::safety_key,      4) \
@@ -55,6 +54,7 @@
     X(dpr_eth_pressures,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelProp,   ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_pressures, 8) \
     X(dpr_eth_temps_2,         (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::dpr_eth_temps_2, 8) \
     X(dpr_eth_bv_state,        (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x2)), ::prc_intranet::payload::ball_valve_position, 4) \
+    X(dpr_eth_publish_cable,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::TelHealth, ::prc_intranet::can::Node::DprEth, 0x3)), ::prc_intranet::payload::cable_info,      1) \
     \
     X(dpr_lox_abort,           (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::safety_key,      4) \
     X(dpr_lox_passivate,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::Emergency, ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::safety_key,      4) \
