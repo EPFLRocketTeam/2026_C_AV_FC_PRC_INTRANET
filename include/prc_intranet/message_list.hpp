@@ -82,4 +82,9 @@
     X(config_send_commit,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::Fc,     0x3)), ::prc_intranet::payload::config_commit,  1) \
     X(config_crc_prc_engine,   (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::PrcP,   0x0)), ::prc_intranet::payload::config_crc,     8) \
     X(config_crc_dpr_eth,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprEth, 0x0)), ::prc_intranet::payload::config_crc,     8) \
-    X(config_crc_dpr_lox,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::config_crc,     8)
+    X(config_crc_dpr_lox,      (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprLox, 0x0)), ::prc_intranet::payload::config_crc,     8) \
+    /* Heartbeats: one per board, counter + sender uptime, see README. */ \
+    X(heartbeat_fc,            (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::Fc,     0x4)), ::prc_intranet::payload::heartbeat,      8) \
+    X(heartbeat_prc_engine,    (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::PrcP,   0x1)), ::prc_intranet::payload::heartbeat,      8) \
+    X(heartbeat_dpr_eth,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprEth, 0x1)), ::prc_intranet::payload::heartbeat,      8) \
+    X(heartbeat_dpr_lox,       (::prc_intranet::can::make_id(::prc_intranet::can::Priority::System,     ::prc_intranet::can::Node::DprLox, 0x1)), ::prc_intranet::payload::heartbeat,      8)

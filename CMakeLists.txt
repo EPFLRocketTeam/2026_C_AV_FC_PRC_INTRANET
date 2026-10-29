@@ -15,3 +15,26 @@ SET(PRC_INTRANET_SOURCE_FILES
 
 add_library(prc_intranet STATIC ${PRC_INTRANET_SOURCE_FILES})
 target_include_directories(prc_intranet PUBLIC include)
+
+#############################################################
+######################## GOOGLE TEST ########################
+#############################################################
+
+# Host check only when this repo is the top level build, so the FC and PRC
+# trees that vendor it never fetch googletest through it.
+if (PROJECT_IS_TOP_LEVEL)
+    include(FetchContent)
+
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/v1.17.0.zip
+    )
+    FetchContent_MakeAvailable(googletest)
+
+    enable_testing()
+    include(GoogleTest)
+
+    add_executable(test_message_list tests/test_message_list.cpp)
+    target_link_libraries(test_message_list PRIVATE prc_intranet GTest::gtest_main)
+    gtest_discover_tests(test_message_list)
+endif()
