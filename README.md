@@ -84,3 +84,22 @@ Add one row to `PRC_INTRANET_MESSAGE_LIST` in `include/prc_intranet/message_list
 (name, CAN id, payload type, wire size). The `MessageId` enum, the `prc_driver`
 callback, the `dispatch_frame` decode case and the `send_<name>` function are all
 generated from that one list; no other file needs to change.
+
+# Heartbeats
+
+Every board sends its own heartbeat at System priority so the others and the ground
+can tell it is alive and still sending: `heartbeat_fc` (node Fc, index 4),
+`heartbeat_prc_engine` (node PrcP, index 1), `heartbeat_dpr_eth` (node DprEth, index 1)
+and `heartbeat_dpr_lox` (node DprLox, index 1). All four carry `payload::heartbeat`
+(8 bytes). `counter` increments once per send, wraps at 2^32 and resets to 0 on boot,
+so a receiver can count missed beats from a jump and spot a reboot from a reset.
+`uptime_ms` is the sender's `HAL_GetTick()`.
+
+# Tests
+
+The host check in `tests/` compiles the message list and checks the heartbeat ids and
+payload size:
+
+```bash
+cmake -S . -B build && cmake --build build && ctest --test-dir build --output-on-failure
+```

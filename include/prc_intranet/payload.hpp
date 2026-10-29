@@ -172,6 +172,14 @@ namespace prc_intranet::payload {
         board_id board;
     };
 
+    // Liveness beat, one per board. counter increments once per send,
+    // wraps at 2^32 and restarts at 0 on boot; uptime_ms is the sender's
+    // HAL_GetTick().
+    struct heartbeat {
+        uint32_t counter;
+        uint32_t uptime_ms;
+    };
+
 #pragma pack(pop)
 
     static_assert(sizeof(safety_key)      == 4);
@@ -198,5 +206,6 @@ namespace prc_intranet::payload {
     static_assert(sizeof(config_commit) == 1);
     static_assert(sizeof(config_crc) == 8);
     static_assert(sizeof(preburn) == 1);
+    static_assert(sizeof(heartbeat) == 8);
 
 };
