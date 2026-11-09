@@ -88,4 +88,13 @@ namespace prc_intranet::constants {
     constexpr uint32_t SAFETY_KEY_DPR_LOX_ABORT     = 0x3A3A3A3A;
     constexpr uint32_t SAFETY_KEY_DPR_LOX_PASSIVATE = 0x3B3B3B3B;
 
+    // Board index in the connectivity matrix (payload::heartbeat
+    // alive_mask, link::LinkMatrix). Bit i of a row means "I hear board i";
+    // row i sits at bits 4i..4i+3 of the 16-bit matrix.
+    constexpr uint8_t LINK_BIT_FC     = 0;
+    constexpr uint8_t LINK_BIT_ENGINE = 1;
+    constexpr uint8_t LINK_BIT_ETH    = 2;
+    constexpr uint8_t LINK_BIT_LOX    = 3;
+    constexpr uint8_t LINK_BOARD_COUNT = 4;
+
 };

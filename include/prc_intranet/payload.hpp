@@ -2,6 +2,7 @@
 #pragma once
 
 #include <cmath>
+#include <cstddef>
 #include <cstdint>
 
 namespace prc_intranet::payload {
@@ -172,12 +173,20 @@ namespace prc_intranet::payload {
         board_id board;
     };
 
-    // Liveness beat, one per board. counter increments once per send,
-    // wraps at 2^32 and restarts at 0 on boot; uptime_ms is the sender's
-    // HAL_GetTick().
+    // Liveness beat, one per board, sent every 50 ms. Tracked on the
+    // receiving side by link::LinkMatrix (link_matrix.hpp).
+    //   uptime_ms   the sender's HAL_GetTick() at send time. Used to spot
+    //               a reboot (see link_matrix.hpp).
+    //   counter     +1 per send, wraps at 2^16. Used to count lost beats.
+    //   alive_mask  the sender's row of the connectivity matrix: bit i set
+    //               when the sender hears board i (LINK_BIT_* in const.hpp),
+    //               its own bit always set.
+    //   reserved    always 0 for now (use still to be decided).
     struct heartbeat {
-        uint32_t counter;
         uint32_t uptime_ms;
+        uint16_t counter;
+        uint8_t  alive_mask;
+        uint8_t  reserved;
     };
 
 #pragma pack(pop)
@@ -207,5 +216,9 @@ namespace prc_intranet::payload {
     static_assert(sizeof(config_crc) == 8);
     static_assert(sizeof(preburn) == 1);
     static_assert(sizeof(heartbeat) == 8);
+    static_assert(offsetof(heartbeat, uptime_ms)  == 0);
+    static_assert(offsetof(heartbeat, counter)    == 4);
+    static_assert(offsetof(heartbeat, alive_mask) == 6);
+    static_assert(offsetof(heartbeat, reserved)   == 7);
 
 };

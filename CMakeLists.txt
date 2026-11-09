@@ -37,4 +37,8 @@ if (PROJECT_IS_TOP_LEVEL)
     add_executable(test_message_list tests/test_message_list.cpp)
     target_link_libraries(test_message_list PRIVATE prc_intranet GTest::gtest_main)
     gtest_discover_tests(test_message_list)
+
+    add_executable(test_link_matrix tests/test_link_matrix.cpp)
+    target_link_libraries(test_link_matrix PRIVATE prc_intranet GTest::gtest_main)
+    gtest_discover_tests(test_link_matrix)
 endif()
