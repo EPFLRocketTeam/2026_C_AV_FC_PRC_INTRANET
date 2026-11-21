@@ -84,3 +84,45 @@ Add one row to `PRC_INTRANET_MESSAGE_LIST` in `include/prc_intranet/message_list
 (name, CAN id, payload type, wire size). The `MessageId` enum, the `prc_driver`
 callback, the `dispatch_frame` decode case and the `send_<name>` function are all
 generated from that one list; no other file needs to change.
+
+# Heartbeats
+
+Every board sends its own heartbeat at System priority so the others and the ground
+can tell it is alive and still sending: `heartbeat_fc` (node Fc, index 4),
+`heartbeat_prc_engine` (node PrcP, index 1), `heartbeat_dpr_eth` (node DprEth, index 1)
+and `heartbeat_dpr_lox` (node DprLox, index 1). All four carry `payload::heartbeat`
+(8 bytes, sent every 50 ms):
+
+| Offset | Field        | Type     | Meaning                                              |
+|--------|--------------|----------|------------------------------------------------------|
+| 0      | `uptime_ms`  | uint32   | sender's `HAL_GetTick()`                             |
+| 4      | `counter`    | uint16   | +1 per send, wraps at 2^16                           |
+| 6      | `alive_mask` | uint8    | sender's row of the connectivity matrix              |
+| 7      | `reserved`   | uint8    | always 0 for now                                     |
+
+## Connectivity matrix
+
+Each board listens to the heartbeats of the 3 others. Bit i of `alive_mask` means
+"I hear board i" (a beat less than 500 ms ago), with `LINK_BIT_FC = 0`,
+`LINK_BIT_ENGINE = 1`, `LINK_BIT_ETH = 2`, `LINK_BIT_LOX = 3` (`const.hpp`); a board's
+own bit is always set. The 16-bit matrix puts row i at bits 4i..4i+3; the row of a
+silent board is 0.
+
+`include/prc_intranet/link_matrix.hpp` (`link::LinkMatrix`, header only, HAL free) does
+the tracking on every board: alive state, own row, full matrix, alive/dead reports
+with a 2 s boot grace counted from the first call, lost beats and reboots.
+
+- **Lost beats**: counter jump, modulo 2^16 (`0xFFFF -> 0` is a step of 1).
+- **Reboot**: between two beats the sender's uptime advanced less than the
+  receiver's clock, by more than 250 ms + elapsed / 64. The counter jump is then
+  not counted as a loss.
+
+# Tests
+
+The host checks in `tests/` compile the message list, check the heartbeat ids, payload
+layout and dispatch round trip (`test_message_list`), and the connectivity matrix
+logic (`test_link_matrix`):
+
+```bash
+cmake -S . -B build && cmake --build build && ctest --test-dir build --output-on-failure
+```
